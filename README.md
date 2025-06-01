@@ -71,16 +71,41 @@ To evaluate how well-capitalised financial institutions are against market shock
 
 ---
 
-## 🧑‍💻 My Contributions (Pranjal Kharbanda)
+## 👨‍💻 My Role (Pranjal Kharbanda)
 
-- **Data Sourcing**: Collected daily financial data for all portfolios via Yahoo Finance and Kenneth French Library.
-- **Portfolio Allocation**: Helped structure the equity and bond portfolios by applying tangency weights using Python.
-- **Editing**: Contributed to final report editing, ensuring accuracy and clarity of financial methodology.
-- **Learnings**:
-  - Gained experience in **portfolio-level VaR modelling**
-  - Understood **rolling-window backtesting** and **QPS scoring**
-  - Developed insight into **asset allocation effects** on risk models
-  - Practiced advanced **Python-based data analytics** and applied **finance theory** into practical risk assessment
+I contributed to the **design, modeling, and evaluation** of all three portfolios. This included hands-on implementation, data preparation, and performance analysis.
+
+### ✅ Equity Portfolio
+- Collected and cleaned equity data from Yahoo Finance
+- Implemented Tangency Portfolio weight selection using Sharpe Ratios in Python
+- Calculated log returns, VaR, and ES using multiple methods (Normal, Historical, t-distribution)
+- Backtested rolling-window exceedances and validated findings using QPS scores
+
+### ✅ Interest Rate Portfolio
+- Selected bond ETFs and validated fixed income data consistency
+- Developed volatility-weighted Historical VaR using the **EWMA** method (λ = 0.94)
+- Performed risk decomposition using bond duration, convexity, and spectral risk measures
+
+### ✅ Combined Portfolio
+- Integrated equity and bond return streams
+- Computed multi-asset portfolio VaR using correlation-adjusted Normal and t-distributions
+- Analyzed diversification benefits and performed backtesting using **Lopez Test**
+
+---
+
+### 📘 Additional Responsibilities & Learnings
+
+- **Data Sourcing**: Extracted daily price and yield data from Yahoo Finance and Kenneth French's database
+- **Model Deployment**: Worked with Excel and Python to apply parametric and non-parametric models across rolling 550-day windows
+- **Documentation & Presentation**: Contributed to the structure and clarity of the final report and slide deck
+
+#### 📚 What I Learned
+- Developed applied skills in **portfolio-level VaR modelling**
+- Practiced **rolling-window backtesting** and performance validation using **QPS scoring**
+- Gained deeper insight into how **asset allocation** affects sensitivity and stability of risk estimates
+- Strengthened my ability to connect **finance theory with data-driven analytics**, particularly around capital preservation and institutional risk control
+
+---
 
 ---
 
