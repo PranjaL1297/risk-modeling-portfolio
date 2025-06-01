@@ -1,68 +1,113 @@
-# 📊 Risk Modeling Project (Group Assignment – MSc Quantitative Finance)
+# 📊 Risk Modelling of Equity, Bond, and Mixed Portfolios
 
-This repository presents a comprehensive risk modeling project developed as part of the UCD MSc Quantitative Finance curriculum. The project involved constructing and analyzing Value at Risk (VaR) and Expected Shortfall (ES) measures across equity, interest rate, and combined portfolios using both historical and parametric methods.
+## Overview
 
-## 🎯 Project Objective
+This project, part of the "Portfolio and Risk Management" module at UCD, investigates the **Value at Risk (VaR)** and **Expected Shortfall (ES)** of three investment strategies. The aim is to assess the robustness of risk models under various market conditions using both **parametric** and **non-parametric** techniques.
 
-The goal was to build three distinct portfolios (Equity Risk, Interest Rate Risk, and Combined Risk) and apply various risk estimation techniques to:
+We model and compare:
+- A portfolio comprising S&P 500 equities
+- A bond portfolio comprising government and corporate bond ETFs
+- A mixed portfolio combining 60% bonds and 40% equities
 
-- Estimate Value at Risk (VaR) and Expected Shortfall (ES)
-- Compare and validate risk models using backtesting
-- Evaluate performance using Sharpe Ratios and scenario analysis
-- Incorporate stress testing and portfolio diversification insights
+Our analysis supports **risk management decision-making** through the use of statistical backtesting, spectral risk measures, and sensitivity testing.
 
-## 👨‍💻 My Contribution
+---
 
-I actively contributed to and independently managed the following components:
+## 🧾 Objective
 
-- 📈 **Equity Risk Portfolio**: Constructed a diversified portfolio of equities, calculated log returns, and estimated risk using:
-  - Historical Simulation
-  - Parametric Normal and t-distribution methods
-  - Exponentially Weighted Moving Average (EWMA)
+To evaluate how well-capitalised financial institutions are against market shocks by identifying which VaR/ES methodology best captures market risk across different portfolio structures.
 
-- 💸 **Interest Rate Risk Portfolio**: Developed a bond portfolio and computed interest rate VaR using duration and convexity adjustments.
+---
 
-- 🔗 **Combined Portfolio**: Integrated equity and interest rate portfolios, implemented variance-covariance matrix adjustments, and tested diversification benefits.
+## 📂 Data
 
-I also helped in presenting results and interpreting model behavior under normal and stress market conditions.
+- **Source**: Yahoo Finance and Kenneth French's Data Library
+- **Period**: January 1, 2019 – March 27, 2024 (5 years)
+- **Assets**:
+  - **Equity Portfolio**: Top stock by market cap from each of the 11 GICS sectors (e.g., XOM, META, JPM)
+  - **Bond Portfolio**: ETFs like BND, AGG, LQD, GOVT representing U.S. government and corporate bonds
+  - **Combined Portfolio**: 60% bonds, 40% equities
+- **Data Frequency**: Daily adjusted closing prices
 
-## 📅 Data Used
+---
 
-We used **daily market data** from **01 January 2019 to 27 March 2024** for:
+## 🧠 Methodology
 
-- **Equities**: Stock prices from global exchanges
-- **Bonds**: Government bond yield and price data
-- **Risk-Free Rate**: Used for Sharpe Ratio and discounting
-- Sources: Yahoo Finance and public data repositories
-- Processed in Excel with manual cleaning for corporate actions (e.g., dividends, splits)
+### 📐 Parametric Methods
+- **Normal Distribution VaR**
+- **Student’s t-Distribution VaR**
+- **Cornish-Fisher Expansion**: Adjusts for skewness and kurtosis
 
-### Data Transformations:
-- Daily **log returns** computed from closing prices
-- Applied **EWMA (λ = 0.94)** for volatility smoothing
-- Rolling window used for VaR/ES estimation
-
-## 🧪 Methodology
-
-Risk estimation techniques applied:
-
+### 📊 Non-Parametric Methods
 - **Historical Simulation (HS)**
-- **Parametric VaR** (Normal and Student's t)
-- **Expected Shortfall (ES)** at 95% and 99% confidence levels
-- **EWMA volatility weighting**
-- **Backtesting** using Kupiec’s test
-- **Stress Testing** via hypothetical extreme scenarios
-- **Sharpe Ratio** and Performance Metrics
+- **Volatility-Weighted HS (EWMA model)**
 
-## 📊 Key Results
+### 🧮 Alternative Method
+- **Spectral Risk Measures** (Cotter & Dowd 2006): Used with a risk aversion coefficient (λ = 550)
 
-- The **equity portfolio** had the highest volatility and exhibited left-tail risk under both HS and parametric VaR.
-- The **interest rate portfolio** showed relatively lower risk, but stress tests revealed convexity-led tail exposures.
-- The **combined portfolio** benefited from diversification, with reduced VaR and higher Sharpe ratios.
-- Backtesting confirmed the robustness of the t-distribution model compared to normal VaR in capturing fat-tailed risks.
+### ✅ Backtesting & Sensitivity Analysis
+- **Lopez Test** and **Binomial Exceedance Test** performed on rolling windows of 550 days
+- Stress-tested different VaR techniques against changing asset weights and lambda decay factors
 
-## 🛠️ Tools & Technologies
+---
 
-- **Microsoft Excel** for modeling, charts, and data transformation
-- **PowerPoint** for risk report and presentation
-- **Python/Power BI (Planned future extension)** for dynamic dashboards and real-time VaR
+## 📈 Key Results
 
+| Portfolio Type        | Best Performing VaR Method     | QPS Score |
+|-----------------------|-------------------------------|-----------|
+| Equity                | Normal Linear VaR              | 0.014     |
+| Bonds                 | Normal Linear VaR              | 0.007     |
+| Equity + Bonds (60/40)| Normal Linear VaR              | 0.014     |
+
+- **Historical and Student’s t-distributions** were close contenders but showed slightly higher exceedance frequencies.
+- **Sensitivity analysis** confirmed that asset allocation and lambda decay values significantly impact VaR estimations.
+
+---
+
+## 🧪 Visuals & Insights
+- All backtesting and rolling-window simulations were visualized.
+- EWMA decay factor λ = 0.85 showed higher responsiveness to recent volatility, enhancing VaR precision.
+- Spectral risk measures (with 5000 slices) were explored for deeper tail risk insights.
+
+---
+
+## 🧑‍💻 My Contributions (Pranjal Kharbanda)
+
+- **Data Sourcing**: Collected daily financial data for all portfolios via Yahoo Finance and Kenneth French Library.
+- **Portfolio Allocation**: Helped structure the equity and bond portfolios by applying tangency weights using Python.
+- **Editing**: Contributed to final report editing, ensuring accuracy and clarity of financial methodology.
+- **Learnings**:
+  - Gained experience in **portfolio-level VaR modelling**
+  - Understood **rolling-window backtesting** and **QPS scoring**
+  - Developed insight into **asset allocation effects** on risk models
+  - Practiced advanced **Python-based data analytics** and applied **finance theory** into practical risk assessment
+
+---
+
+## 📚 Literature Foundation
+
+Key models and approaches were drawn from:
+- John Hull (2012), Kevin Dowd (2005)
+- Acerbi & Tasche (2002) for Cornish-Fisher and ES
+- Cotter & Dowd (2006/07) for Spectral Risk
+- Lopez (1998) for empirical backtesting frameworks
+
+---
+
+## 💡 Conclusion
+
+The study recommends the **Normal Linear VaR model** as the most robust and industry-relevant choice for all three portfolios. Backtesting and sensitivity testing validate its lower exceedance rates and consistent performance under different market scenarios.
+
+---
+
+## 📎 Files Included
+
+- `Risk_Modelling(Group-25).xlsx`: Full model and calculations
+- `PR_Assignment Risk Modelling.pdf`: Full write-up
+
+
+---
+
+## 📌 Keywords
+
+`VaR`, `Expected Shortfall`, `Spectral Risk`, `Portfolio Management`, `Backtesting`, `EWMA`, `Cornish-Fisher`, `QPS`, `Financial Risk Modelling`, `UCD MSc Quantitative Finance`
